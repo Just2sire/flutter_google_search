@@ -10,15 +10,18 @@ class SearchButton extends StatelessWidget {
     return MaterialButton(
       onPressed: () {},
       hoverColor: Colors.white10,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(4),
-          ),
-          side: BorderSide(
-            color: Colors.white,
-            width: 0.3,
-            strokeAlign: 0.3,
-          )),
+      shape: RoundedRectangleBorder(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(4),
+        ),
+        side: size.width > 178
+            ? const BorderSide(
+                color: Colors.white,
+                width: 0.3,
+                strokeAlign: 0.3,
+              )
+            : BorderSide.none,
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 25,
         vertical: 18,
