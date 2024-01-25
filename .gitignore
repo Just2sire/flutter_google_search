@@ -45,4 +45,4 @@ app.*.map.json
 
 
 # API KEYS
-/lib/api_keys.dart
+/lib/config/api_keys.dart
