@@ -9,7 +9,7 @@ class SearchHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 25,
       ),
       child: Row(
@@ -34,7 +34,7 @@ class SearchHeader extends StatelessWidget {
             height: 44,
             decoration: BoxDecoration(
               color: searchColor,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(22),
               border: Border.all(
                 color: searchColor,
               ),
@@ -43,17 +43,36 @@ class SearchHeader extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
               ),
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  suffixIcon: Row(
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(left: 20,),
+                suffixIcon: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  constraints: const BoxConstraints(maxWidth: 150),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SvgPicture.asset("assets/images/mic-icon.svg", height: 20, width: 20,),
-                      const SizedBox(width: 5,),
+                      SvgPicture.asset(
+                        "assets/images/mic-icon.svg",
+                        height: 20,
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.search,
+                        color: blueColor,
+                      ),
                     ],
                   ),
                 ),
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+              ),
             ),
           ),
         ],
