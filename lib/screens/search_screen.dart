@@ -47,132 +47,133 @@ class SearchScreen extends StatelessWidget {
                 ),
                 // search results
                 FutureBuilder(
-                    future: ApiService().fetchData(
-                      queryTerm: searchQuery,
-                      start: start,
-                    ),
-                    builder: (context, snapshot) {
-                      // if (snapshot.connectionState == ConnectionState.waiting) {
-                      //   return const Center(
-                      //     child: CircularProgressIndicator(),
-                      //   );
-                      // }
-        
-                      if (snapshot.hasData) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                    left: size.width <= 768 ? 10 : 150,
-                                    top: 12,
-                                  ),
-                                  child: Text(
-                                    "About ${snapshot.data?['searchInformation']['formattedTotalResults']} results (${snapshot.data?['searchInformation']['formattedSearchTime']} seconds)",
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      color: Color(0xFF70757a),
-                                    ),
+                  future: ApiService().fetchData(
+                    queryTerm: searchQuery,
+                    start: start,
+                  ),
+                  builder: (context, snapshot) {
+                    // if (snapshot.connectionState == ConnectionState.waiting) {
+                    //   return const Center(
+                    //     child: CircularProgressIndicator(),
+                    //   );
+                    // }
+
+                    if (snapshot.hasData) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(
+                                  left: size.width <= 768 ? 10 : 150,
+                                  top: 12,
+                                ),
+                                child: Text(
+                                  "About ${snapshot.data?['searchInformation']['formattedTotalResults']} results (${snapshot.data?['searchInformation']['formattedSearchTime']} seconds)",
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xFF70757a),
                                   ),
                                 ),
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount:
-                                      snapshot.data?['items'].length as int,
-                                  itemBuilder: (context, index) {
-                                    final itemData =
-                                        snapshot.data?['items'][index] as Map;
-                                    return Column(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: size.width <= 768 ? 10 : 150,
-                                            top: 10,
-                                          ),
-                                          child: SearchResultComponent(
-                                            desc: itemData["snippet"],
-                                            link: itemData["formattedUrl"],
-                                            text: itemData["title"],
-                                            linkToGo: itemData["link"],
-                                          ),
+                              ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount:
+                                    snapshot.data?['items'].length as int,
+                                itemBuilder: (context, index) {
+                                  final itemData =
+                                      snapshot.data?['items'][index] as Map;
+                                  return Column(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: size.width <= 768 ? 10 : 150,
+                                          top: 10,
                                         ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      if (start != '0') {
-                                        navigate.push(
-                                          MaterialPageRoute(
-                                            builder: (context) => SearchScreen(
-                                              searchQuery: searchQuery,
-                                              start: (int.parse(start) - 10)
-                                                  .toString(),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                    child: const Text(
-                                      "< Prev",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: blueColor,
+                                        child: SearchResultComponent(
+                                          desc: itemData["snippet"],
+                                          link: itemData["formattedUrl"],
+                                          text: itemData["title"],
+                                          linkToGo: itemData["link"],
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
+                                    ],
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    if (start != '0') {
                                       navigate.push(
                                         MaterialPageRoute(
                                           builder: (context) => SearchScreen(
                                             searchQuery: searchQuery,
-                                            start: (int.parse(start) + 10)
+                                            start: (int.parse(start) - 10)
                                                 .toString(),
                                           ),
                                         ),
                                       );
-                                    },
-                                    child: const Text(
-                                      "Next >",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: blueColor,
-                                      ),
+                                    }
+                                  },
+                                  child: const Text(
+                                    "< Prev",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: blueColor,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(
+                                  width: 30,
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    navigate.push(
+                                      MaterialPageRoute(
+                                        builder: (context) => SearchScreen(
+                                          searchQuery: searchQuery,
+                                          start: (int.parse(start) + 10)
+                                              .toString(),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    "Next >",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: blueColor,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            const SearchFooter(),
-                          ],
-                        );
-                      }
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const SearchFooter(),
+                        ],
                       );
-                    }),
+                    }
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
                 // pagination buttons
               ],
             ),

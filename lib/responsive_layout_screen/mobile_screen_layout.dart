@@ -62,28 +62,33 @@ class MobileScreenLayout extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: size.height * 0.2,
-          ),
-          const Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: size.height  * 0.89,
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height * 0.2,
+              ),
+              const Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SearchWidget(width: 0.9,),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
+                    Column(
+                      children: [
+                        SearchWidget(width: 0.9,),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                      ],
+                    ),
+                    MobileFooter(),
                   ],
                 ),
-                MobileFooter(),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
