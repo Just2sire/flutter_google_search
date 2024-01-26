@@ -1,16 +1,21 @@
 # google_search_app
 
-A new Flutter project.
+Un clone responsive (Mobile et web) de Google search 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Le projet utilise posté des données fictifs car ne pouvant pas partager mes clés d'API du CustomGoogleSearch.
 
-A few resources to get you started if this is your first Flutter project:
+Mais vous pouvez remédier à celà en suivant ces étapes
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🚀 **Activation du Google Search dans votre projet Flutter** 🚀
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Obtenez une clé d'API du Custom Google Search ici 👉 [Custom Google Search API](https://developers.google.com/custom-search/v1/overview?hl=fr)
+
+2. Créez votre propre clé de contexte en utilisant ce lien magique ✨ [Create Context Key](https://programmablesearchengine.google.com/controlpanel/create)
+
+3. Utilisez vos clés d'API dans le fichier `lib/config/api_keys.dart`. C'est là que la magie commence! 🎩✨
+
+4. Dans le fichier `lib/services/api_service.dart`, mettez la variable `isDummyData` à false pour utiliser les données réelles. 📊📈
+
+Et voilà ! 🎉 Le projet est maintenant prêt à faire des recherches Google, que ce soit sur mobile ou sur le Web 🚀👩‍💻
