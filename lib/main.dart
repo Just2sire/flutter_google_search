@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_search_app/responsive_layout_screen/mobile_screen_layout.dart';
 import 'package:google_search_app/responsive_layout_screen/responsive_layout_screen.dart';
 import 'package:google_search_app/responsive_layout_screen/web_screen_layout.dart';
-import 'package:google_search_app/screens/search_screen.dart';
 import 'package:google_search_app/utils/colors.dart';
 
 void main() {
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: backgroundColor,
         )
       ),
-      home: const SearchScreen(),
+      home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

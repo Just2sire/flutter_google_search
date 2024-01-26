@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_search_app/screens/search_screen.dart';
 import 'package:google_search_app/utils/colors.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -16,7 +17,7 @@ class SearchWidget extends StatelessWidget {
         Center(
           child: Image.asset(
             "assets/images/google-logo.png",
-            width: size.width * 0.18,
+            width: size.width <= 769 ? size.width * 0.6 : size.width * 0.18,
           ),
         ),
         const SizedBox(
@@ -25,22 +26,34 @@ class SearchWidget extends StatelessWidget {
         SizedBox(
           width: size.width * width,
           child: TextFormField(
-            cursorColor: Colors.black,
+            // cursorColor: Colors.black,
             cursorWidth: 1,
-            style: TextStyle(
-              color: Colors.black,
-            ),
+            onFieldSubmitted: (query) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SearchScreen(
+                      searchQuery: query,
+                      start: '0',
+                    );
+                  },
+                ),
+              );
+            },
+            // style: const TextStyle(
+            //   color: Colors.black,
+            // ),
             decoration: InputDecoration(
               filled: true,
-              fillColor: primaryColor,
+              fillColor: backgroundColor,
               hintText:
                   "Effectuez une recherche sur Google ou saisissez une URL",
-              hintStyle: TextStyle(
-                color: Colors.black45,
-              ),
-              contentPadding: EdgeInsets.all(5),
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(
+              // hintStyle: const TextStyle(
+              //   color: Colors.black45,
+              // ),
+              contentPadding: const EdgeInsets.all(5),
+              prefixIcon: const Padding(
+                padding: EdgeInsets.only(
                   right: 8.0,
                   left: 5,
                 ),
@@ -49,17 +62,6 @@ class SearchWidget extends StatelessWidget {
                   color: searchBorder,
                 ),
               ),
-              // prefixIcon: Padding(
-              //   padding: const EdgeInsets.symmetric(
-              //     horizontal: 8.0,
-              //   ),
-              //   child: SvgPicture.asset(
-              //     "assets/images/search-icon.svg",
-              //     color: searchColor,
-              //     width: 1,
-              //     height: 1,
-              //   ),
-              // ),
               suffixIcon: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 8.0,
@@ -70,23 +72,18 @@ class SearchWidget extends StatelessWidget {
                   height: 1,
                 ),
               ),
-              // suffixIcon: Padding(
-              //   padding: const EdgeInsets.symmetric(
-              //     horizontal: 8.0,
-              //   ),
-              //   child: SvgPicture.asset(
-              //     "assets/images/lens-icon.svg",
-              //     width: 1,
-              //     height: 1,
-              //   ),
-              // ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(32),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(32),
-              ),
+              focusedBorder:const OutlineInputBorder(
+                  borderSide: BorderSide(color: searchBorder),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                ),
+              border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: searchBorder),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                ),
             ),
           ),
         )

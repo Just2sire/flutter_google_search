@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_search_app/utils/colors.dart';
 import 'package:google_search_app/widgets/mobile/mobile_footer.dart';
 import 'package:google_search_app/widgets/search_widget.dart';
-import 'package:google_search_app/widgets/translation_button.dart';
-import 'package:google_search_app/widgets/search_buttons_widgets.dart';
 import 'package:svg_flutter/svg.dart';
 
 class MobileScreenLayout extends StatelessWidget {
@@ -76,14 +74,9 @@ class MobileScreenLayout extends StatelessWidget {
                 Column(
                   children: [
                     SearchWidget(width: 0.9,),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SearchButtons(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TranslationButton(),
+                    // SizedBox(
+                    //   height: 20,
+                    // ),
                   ],
                 ),
                 MobileFooter(),
