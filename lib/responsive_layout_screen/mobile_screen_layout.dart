@@ -64,7 +64,7 @@ class MobileScreenLayout extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: size.height  * 0.89,
+          height: size.height  * 0.9,
           child: Column(
             children: [
               SizedBox(

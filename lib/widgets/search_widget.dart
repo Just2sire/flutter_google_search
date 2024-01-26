@@ -72,18 +72,18 @@ class SearchWidget extends StatelessWidget {
                   height: 1,
                 ),
               ),
-              focusedBorder:const OutlineInputBorder(
-                  borderSide: BorderSide(color: searchBorder),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
-                  ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: blueColor),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
                 ),
+              ),
               border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: searchBorder),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
-                  ),
+                borderSide: BorderSide(color: blueColor),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
                 ),
+              ),
             ),
           ),
         )
